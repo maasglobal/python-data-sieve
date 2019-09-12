@@ -1,2 +1,2 @@
-# python-data-sieve
+# Python data sieve
 A sieve to separate wanted and unwanted data properties.
