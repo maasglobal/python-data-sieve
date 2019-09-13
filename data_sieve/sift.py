@@ -18,5 +18,7 @@ def sift(datum, sieve):
             result[key] = sift(value, sieve[key])
         elif isinstance(value, list):
             result[key] = [sift(item, sieve[key]) for item in value]
+        else:
+            result[key] = value
 
     return result
