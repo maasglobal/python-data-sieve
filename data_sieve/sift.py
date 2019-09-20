@@ -12,13 +12,18 @@ def sift(datum, sieve):
     result = {}
 
     for key, value in datum.items():
+        # Ignore elements not defined in the sieve
         if key not in sieve:
             continue
+        # Sift all values in a dict, allowing nested data
         elif isinstance(value, dict):
             result[key] = sift(value, sieve[key])
+        # Sift all elements of lists, allowing nested data
         elif isinstance(value, list):
             result[key] = [sift(item, sieve[key]) for item in value]
-        else:
+        elif value == True:
+            # Check for truthiness of value, since we expect a Boolean sieve
+            # i.e. some values can be explicitly filtered out
             result[key] = value
 
     return result
